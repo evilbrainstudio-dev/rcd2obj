@@ -17,17 +17,17 @@
 package dev.evilbrainstudio.rcd2obj.annotation.naming;
 
 /**
- * Naming strategy for data extraction.
+ * A Naming strategy for a data extraction.
  *
  * @author Andrey_Yurzanov
  * @since 1.0
  */
 public interface NamingStrategy {
   /**
-   * Getting the name for data extraction.
+   * Getting the name for the data extraction.
    *
-   * @param original the original name
-   * @return modified name for data extraction
+   * @param original the original names
+   * @return the modified name for the data extraction
    */
-  String resolve(String original);
+  String resolve(String... original);
 }

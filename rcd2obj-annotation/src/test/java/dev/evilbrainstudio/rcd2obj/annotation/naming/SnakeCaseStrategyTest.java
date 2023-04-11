@@ -29,18 +29,19 @@ import org.junit.jupiter.api.Test;
  */
 class SnakeCaseStrategyTest {
   private final SnakeCaseStrategy strategy;
-  private final Map<String, String> names;
+  private final Map<String[], String> names;
 
   SnakeCaseStrategyTest() {
     strategy = new SnakeCaseStrategy();
     names = new HashMap<>();
-    names.put("TestName", "test_name");
-    names.put("testName", "test_name");
-    names.put("testname", "testname");
-    names.put("Testname", "testname");
-    names.put("test_name", "test_name");
-    names.put("TEST_NAME", "TEST_NAME");
-    names.put("TESTNAME", "TESTNAME");
+    names.put(new String[]{"TestName"}, "test_name");
+    names.put(new String[]{"testName"}, "test_name");
+    names.put(new String[]{"testname"}, "testname");
+    names.put(new String[]{"Testname"}, "testname");
+    names.put(new String[]{"test_name"}, "test_name");
+    names.put(new String[]{"TEST_NAME"}, "TEST_NAME");
+    names.put(new String[]{"TESTNAME"}, "TESTNAME");
+    names.put(new String[]{"TestName", "test"}, "test_name_test");
   }
 
   @Test
@@ -50,7 +51,7 @@ class SnakeCaseStrategyTest {
         () -> strategy.resolve(null)
     );
 
-    for (Entry<String, String> entry : names.entrySet()) {
+    for (Entry<String[], String> entry : names.entrySet()) {
       Assertions.assertEquals(
           strategy.resolve(entry.getKey()),
           entry.getValue()

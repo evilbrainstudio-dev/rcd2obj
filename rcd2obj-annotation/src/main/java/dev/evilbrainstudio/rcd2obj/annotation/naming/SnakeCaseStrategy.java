@@ -17,8 +17,8 @@
 package dev.evilbrainstudio.rcd2obj.annotation.naming;
 
 /**
- * Implementation of @{@link NamingStrategy} for data extraction. The name represents in the form of
- * snake_case.
+ * Implementation of {@link NamingStrategy} for a data extraction. The name represents in the form
+ * of snake_case.
  *
  * @author Andrey_Yurzanov
  * @since 1.0
@@ -27,11 +27,12 @@ public class SnakeCaseStrategy implements NamingStrategy {
   private static final char SEPARATOR = '_';
 
   @Override
-  public String resolve(String original) {
+  public String resolve(String... original) {
     boolean match = true;
 
+    String name = String.join(Character.toString(SEPARATOR), original);
     StringBuilder buffer = new StringBuilder();
-    char[] symbols = original.toCharArray();
+    char[] symbols = name.toCharArray();
     for (int i = 0; i < symbols.length; i++) {
       boolean isUpper = Character.isUpperCase(symbols[i]);
       if (match && SEPARATOR != symbols[i]) {
@@ -45,7 +46,7 @@ public class SnakeCaseStrategy implements NamingStrategy {
     }
 
     if (match) {
-      return original;
+      return name;
     }
     return buffer.toString();
   }

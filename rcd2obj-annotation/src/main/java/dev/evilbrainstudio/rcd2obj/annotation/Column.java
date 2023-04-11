@@ -17,8 +17,6 @@
 package dev.evilbrainstudio.rcd2obj.annotation;
 
 import dev.evilbrainstudio.rcd2obj.annotation.Column.Columns;
-import dev.evilbrainstudio.rcd2obj.annotation.naming.NamingStrategy;
-import dev.evilbrainstudio.rcd2obj.annotation.naming.SnakeCaseStrategy;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Repeatable;
@@ -42,11 +40,6 @@ public @interface Column {
    * The name of the column that is the data source for mapping.
    */
   String value() default "";
-
-  /**
-   * Naming strategy for data extraction. By default {@link SnakeCaseStrategy}.
-   */
-  Class<? extends NamingStrategy> naming() default SnakeCaseStrategy.class;
 
   /**
    * Container of {@link Column} annotations.

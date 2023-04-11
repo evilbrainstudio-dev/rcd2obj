@@ -18,6 +18,7 @@ package dev.evilbrainstudio.rcd2obj.annotation;
 
 import dev.evilbrainstudio.rcd2obj.annotation.Table.Tables;
 import dev.evilbrainstudio.rcd2obj.annotation.naming.NamingStrategy;
+import dev.evilbrainstudio.rcd2obj.annotation.naming.PointCombineStrategy;
 import dev.evilbrainstudio.rcd2obj.annotation.naming.SnakeCaseStrategy;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -46,6 +47,11 @@ public @interface Table {
    * Naming strategy for data extraction. By default {@link SnakeCaseStrategy}.
    */
   Class<? extends NamingStrategy> naming() default SnakeCaseStrategy.class;
+
+  /**
+   * Naming strategy for names combination. By default {@link PointCombineStrategy}.
+   */
+  Class<? extends NamingStrategy> combining() default PointCombineStrategy.class;
 
   /**
    * Container of {@link Table} annotations.
